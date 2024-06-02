@@ -1,15 +1,11 @@
 //element selecteren
 //button selecteren
-const selectButtonVeranderText = document.getElementById('veranderText');
-//tekst selecteren
-const SelectText = document.getElementById('textContent')
-
-//element manipuleren door de text te veranderen wanneer op knop gedrukt met een event listener
+const btnToevoegen = document.getElementById('btnToevoegen');
 
 //event listener op knop
-document.getElementById('veranderText').addEventListener("click", veranderText);
+document.getElementById('btnToevoegen').addEventListener("click", popup);
 
-//functie verander text/ element manipuleren
-function veranderText() {
-    SelectText.textContent = "Tekst werd net verandert!";
+//popup om te confirmeren dat item is toegevoegd
+function popup() {
+    window.alert('Item is toegevoegd!');
 }
