@@ -1,26 +1,20 @@
+//self executing function
+(function() {
 //element selecteren
 //button selecteren
 const btnToevoegen = document.getElementById('btnToevoegen');
 
+})();
+
 function frmValideren() {
-    let testValidatie = document.forms["frmToevoegenToDo"]["iptOpdracht"].value;
+    let iptOpdracht = document.forms["frmToevoegenToDo"]["iptOpdracht"].value;
     //checken of de input leeg is
-    if (testValidatie == '') {
-        popupLeeg();
+    if (iptOpdracht == '') {
+        window.alert('Je moet iets invullen' + iptOpdracht);
         return false;
     }
     else {
-        popupToegevoegd();
+        window.alert('Opdracht is toegevoegd!' + iptOpdracht)
         return false;
     }
-
-}
-
-//popup om te confirmeren dat item is toegevoegd
-function popupLeeg() {
-    window.alert('Je moet iets invullen');
-}
-
-function popupToegevoegd() {
-    window.alert('Opdracht is toegevoegd!')
 }
