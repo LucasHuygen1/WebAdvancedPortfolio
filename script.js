@@ -65,6 +65,9 @@ function toDoLijstTonen() {
             const index = this.getAttribute('data-index');
             lijstOpdrachten.splice(index, 1);
             localStorage.setItem("To-Do", JSON.stringify(lijstOpdrachten));
+            //pagina refreshen want als er item wordt toegevoegd komen de verwijderde er anders ook nog bij
+            window.location.reload();
+
             toDoLijstTonen();
         });
     });
