@@ -1,10 +1,9 @@
-//self executing function
 (function() {
-//element selecteren
-//button selecteren
-const btnToevoegen = document.getElementById('btnToevoegen');
-const iptOpdracht = document.querySelector('#iptOpdracht');
-const ToDoLijst = document.getElementById('ToDoLijst');
+    // Element selecteren
+    const btnToevoegen = document.getElementById('btnToevoegen');
+    const iptOpdracht = document.querySelector('#iptOpdracht');
+    const ToDoLijst = document.getElementById('ToDoLijst');
+    let lijstOpdrachten = JSON.parse(localStorage.getItem("To-Do")) || [];
 
     // Event listener voor de toevoeg knop
     btnToevoegen.addEventListener('click', function(event) {
@@ -15,14 +14,14 @@ const ToDoLijst = document.getElementById('ToDoLijst');
     //to do lijst renderen
     toDoLijstTonen();
 
-    // functie valideren
+    // Function to validate and add the task
     function frmValideren() {
         // Checken of de input leeg is
         if (iptOpdracht.value.trim() === '') {
             window.alert('Je moet iets invullen');
             return false;
         } else {
-            //for loop opdracht in localstorage zetten
+            // Adding the input value to the array using a loop
             for (let index = 0; index < 1; index++) {
                 lijstOpdrachten.push(iptOpdracht.value.trim());
             }
@@ -34,7 +33,7 @@ const ToDoLijst = document.getElementById('ToDoLijst');
             
             iptOpdracht.value = '';
 
-             //to do lijst renderen
+            //to do lijst renderen
             toDoLijstTonen();
 
             return false;
@@ -46,6 +45,8 @@ const ToDoLijst = document.getElementById('ToDoLijst');
 
 function toDoLijstTonen() {
      //HTML
+    let lijstOpdrachten = JSON.parse(localStorage.getItem("To-Do")) || [];
+
      for (let index = 0; index < localStorage.length; index++) {
         ToDoLijst.innerHTML = ''; 
         //arrow functie gebruiken
@@ -57,5 +58,15 @@ function toDoLijstTonen() {
             </div>`;
         });
     }
-    
+
+    //event listener wanneer er op verwijderen wordt geklikt, index wordt meegegeven
+    document.querySelectorAll('.verwijderen').forEach(button => {
+        button.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            lijstOpdrachten.splice(index, 1);
+            localStorage.setItem("To-Do", JSON.stringify(lijstOpdrachten));
+            toDoLijstTonen();
+        });
+    });
 }
+
