@@ -56,8 +56,13 @@ function toDoLijstTonen() {
   ToDoLijst.innerHTML = "";
   let tweedeNummerIndex = toegevoegdeArrays.length / 2;
   for (let index = 0; index < lijstOpdrachten1.length; index++) {
+    //berekeningen met getallen
+    const [vermenigvuldigen, delen, macht] = Oplossingen(toegevoegdeArrays[index], toegevoegdeArrays[tweedeNummerIndex])
     ToDoLijst.innerHTML += `<div class="ToDoBox">
-                <p>${toegevoegdeArrays[index]} and ${toegevoegdeArrays[tweedeNummerIndex]}</p>
+                <p>${toegevoegdeArrays[index]} en ${toegevoegdeArrays[tweedeNummerIndex]}</p>
+                <p>Vermenigvuldigen: ${vermenigvuldigen.toFixed(2)}</p>
+                <p>Delen: ${delen.toFixed(2)}</p>
+                <p>Macht: ${macht.toFixed(2)}</p>
                 <button class="verwijderen" data-index="${index}">Verwijder</button>
             </div>`;
     tweedeNummerIndex += 1;
@@ -79,4 +84,15 @@ function toDoLijstTonen() {
       toDoLijstTonen();
     });
   });
+}
+
+//destructuring
+function Oplossingen(Nummer1, Nummer2) {
+
+  const vermenigvuldigen = Nummer1 * Nummer2;
+  const delen = Nummer1 / Nummer2;
+  const macht = Math.pow(Nummer1, Nummer2)
+
+
+  return [vermenigvuldigen, delen, macht];
 }
