@@ -33,7 +33,7 @@
             
             iptOpdracht.value = '';
 
-             //to do lijst renderen
+            //to do lijst renderen
             toDoLijstTonen();
 
             return false;
@@ -45,6 +45,8 @@
 
 function toDoLijstTonen() {
      //HTML
+    let lijstOpdrachten = JSON.parse(localStorage.getItem("To-Do")) || [];
+
      for (let index = 0; index < localStorage.length; index++) {
         ToDoLijst.innerHTML = ''; 
         //arrow functie gebruiken
@@ -56,5 +58,15 @@ function toDoLijstTonen() {
             </div>`;
         });
     }
-    
+
+    //event listener wanneer er op verwijderen wordt geklikt, index wordt meegegeven
+    document.querySelectorAll('.verwijderen').forEach(button => {
+        button.addEventListener('click', function() {
+            const index = this.getAttribute('data-index');
+            lijstOpdrachten.splice(index, 1);
+            localStorage.setItem("To-Do", JSON.stringify(lijstOpdrachten));
+            toDoLijstTonen();
+        });
+    });
 }
+
