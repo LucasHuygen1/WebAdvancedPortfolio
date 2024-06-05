@@ -1,48 +1,60 @@
-//self executing function
 (function() {
-//element selecteren
-//button selecteren
-const btnToevoegen = document.getElementById('btnToevoegen');
-const iptOpdracht = document.querySelector('#iptOpdracht');
-const ToDoLijst = document.getElementById('ToDoLijst');
+    // Element selecteren
+    const btnToevoegen = document.getElementById('btnToevoegen');
+    const iptOpdracht = document.querySelector('#iptOpdracht');
+    const ToDoLijst = document.getElementById('ToDoLijst');
+    let lijstOpdrachten = JSON.parse(localStorage.getItem("To-Do")) || [];
 
-// Event listener voor de toevoeg knop
-btnToevoegen.addEventListener('click', function(event) {
-    event.preventDefault();
-    frmValideren();
-});
+    // Event listener voor de toevoeg knop
+    btnToevoegen.addEventListener('click', function(event) {
+        event.preventDefault();
+        frmValideren();
+    });
+    
+    //to do lijst renderen
+    toDoLijstTonen();
 
-ToDoLijst.innerHTML = 
-         `<div class="ToDoBox">
-         <p>${localStorage.getItem("To-Do")}</p>
-         <p>${localStorage.key("To-Do")}</p>
-         <button class="verwijderen">Verwijder</button>
-         </div>`
+    // Function to validate and add the task
+    function frmValideren() {
+        // Checken of de input leeg is
+        if (iptOpdracht.value.trim() === '') {
+            window.alert('Je moet iets invullen');
+            return false;
+        } else {
+            // Adding the input value to the array using a loop
+            for (let index = 0; index < 1; index++) {
+                lijstOpdrachten.push(iptOpdracht.value.trim());
+            }
+            window.alert('Opdracht is toegevoegd: ' + iptOpdracht.value);
+
+            // Value in localStorage zetten
+            localStorage.setItem("To-Do", JSON.stringify(lijstOpdrachten));
+
+            
+            iptOpdracht.value = '';
+
+             //to do lijst renderen
+            toDoLijstTonen();
+
+            return false;
+
+        }
+    }
 })();
 
-function frmValideren() {
-   
-    //checken of de input leeg is
-    if (iptOpdracht.value == '') {
-        window.alert('Je moet iets invullen' + iptOpdracht.value);
-        return false;
+
+function toDoLijstTonen() {
+     //HTML
+     for (let index = 0; index < localStorage.length; index++) {
+        ToDoLijst.innerHTML = ''; 
+        //arrow functie gebruiken
+        lijstOpdrachten.forEach((opdracht, index) => {
+            ToDoLijst.innerHTML += 
+            `<div class="ToDoBox">
+                <p>${opdracht}</p>
+                <button class="verwijderen" data-index="${index}">Verwijder</button>
+            </div>`;
+        });
     }
-    else {
-        window.alert('Opdracht is toegevoegd!' + iptOpdracht.value)
-
-         //value in localstorage zetten
-         localStorage.setItem("To-Do", iptOpdracht.value);
-
-         //div aanmaken en todo boodschap erin zetten samen met verwijderen knop
-         ToDoLijst.innerHTML = 
-         `<div class="ToDoBox">
-         <p>${localStorage.getItem("To-Do")}</p>
-         <p>${localStorage.key("To-Do")}</p>
-         <button class="verwijderen">Verwijder</button>
-         </div>`
-         //document.getElementById("ToDoLijst").innerHTML = localStorage.getItem("To-Do");
-
-        
-        return false;
-    }
+    
 }
