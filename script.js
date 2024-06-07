@@ -16,37 +16,63 @@
     frmValideren();
   });
 
+ 
   //to do lijst renderen
   toDoLijstTonen();
 
-  //Hier wordt form gevalideerd #4
-  function frmValideren() {
-    // Checken of de input leeg is
-    if (iptOpdracht.value.trim() === "" || iptOpdracht2.value.trim() === "") {
-      window.alert("Je moet iets invullen");
-      return false;
+// Functie die een Promise teruggeeft om te controleren of de invoer een waarde heeft.
+// Gebruik van promise #12
+function controlerenInputLeeg() {
+  return new Promise(function checkInput(resolve, reject) {
+    if (iptOpdracht.value.trim() !== "" && iptOpdracht2.value.trim() !== "") {
+      resolve("Getallen werden toegevoegd");
     } else {
-      // Adding the input value to the array using a loop
-      for (let index = 0; index < 1; index++) {
-        lijstOpdrachten1.push(iptOpdracht.value.trim());
-        lijstOpdrachten2.push(iptOpdracht2.value.trim());
-      }
-
-      // Value in localStorage zetten
-      //gebruik van localstorage #20
-      localStorage.setItem("Nummer1", JSON.stringify(lijstOpdrachten1));
-      localStorage.setItem("Nummer2", JSON.stringify(lijstOpdrachten2));
-
-      iptOpdracht.value = "";
-      iptOpdracht2.value = "";
-
-      //to do lijst renderen
-      toDoLijstTonen();
-
-      return false;
+      reject("De invoer is leeg");
     }
-  }
+  });
+}
+
+//Hier wordt form gevalideerd #4
+function frmValideren() {
+  controlerenInputLeeg()
+    .then(function(resolve) {
+      // er is een input 
+        // input in array zetten
+        for (let index = 0; index < 1; index++) {
+          lijstOpdrachten1.push(iptOpdracht.value.trim());
+          lijstOpdrachten2.push(iptOpdracht2.value.trim());
+        }
+
+        // Value in localStorage zetten
+        //gebruik van localstorage #20
+        localStorage.setItem("Nummer1", JSON.stringify(lijstOpdrachten1));
+        localStorage.setItem("Nummer2", JSON.stringify(lijstOpdrachten2));
+
+        iptOpdracht.value = "";
+        iptOpdracht2.value = "";
+
+        //to do lijst renderen
+        toDoLijstTonen();
+        
+        window.alert(resolve);
+        return false;
+      
+    })
+    //gebruik van Consumer methods #13
+    .catch(function(reject) {
+      // input is leeg 
+
+      // Foutmelding weergeven
+      window.alert(reject);
+      return false;
+    });
+
+  
+}
+
 })();
+
+
 
 function toDoLijstTonen() {
   //HTML

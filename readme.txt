@@ -7,4 +7,5 @@ https://chatgpt.com/share/443ce5e5-e9ca-4246-b387-83832f732c09 /// gebruikt voor
 https://www.w3schools.com/react/tryit.asp?filename=tryreact_es6_destructuring_array /// Gebruikt voor destructuring
 https://forkful.ai/nl/javascript/numbers/rounding-numbers/ /// Getal tot 2 cijfers na de komma afronden
 https://stackoverflow.com/questions/38748298/remove-array-item-from-localstorage /// In local storage verwijderen op basis van index 
-µ
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises ///promises 
+https://www.w3schools.com/Js/js_promise.asp /// Gebruik van promises
