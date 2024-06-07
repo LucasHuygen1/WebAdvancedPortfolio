@@ -9,3 +9,4 @@ https://forkful.ai/nl/javascript/numbers/rounding-numbers/ /// Getal tot 2 cijfe
 https://stackoverflow.com/questions/38748298/remove-array-item-from-localstorage /// In local storage verwijderen op basis van index 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises ///promises 
 https://www.w3schools.com/Js/js_promise.asp /// Gebruik van promises
+https://chatgpt.com/share/831534e4-a309-4456-92a1-22c83fb92515 /// proberen oplossen wanneer je enter klikt wordt het vorige verwijderd ipv huidige toegevoegd. Niet kunnen fixen
