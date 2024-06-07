@@ -7,6 +7,7 @@ body {
 }
 
 .ToDoBox {
+    /* Gebruik van flexbox*/
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -29,7 +30,7 @@ p{
     from { transform: translateX(0) scale(1) rotate(0deg); }
     to { transform: translatey(500px) scale(1.5) rotate(360deg); }
   }
-  
+  /*basis css animatie #18*/
   .titel:hover {
-    animation: moving 2s backwards;
+    animation: moving 2.5s backwards;
 }

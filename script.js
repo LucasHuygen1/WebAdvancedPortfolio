@@ -1,6 +1,8 @@
+//self executing function #15
 (function () {
-  // Element selecteren
+  // Elementen selecteren #1
   const btnToevoegen = document.getElementById("btnToevoegen");
+  //Gebruik van een constante #5
   const iptOpdracht = document.querySelector("#iptOpdracht");
   const iptOpdracht2 = document.querySelector("#iptOpdracht2");
 
@@ -17,6 +19,7 @@
   //to do lijst renderen
   toDoLijstTonen();
 
+  //Hier wordt form gevalideerd #4
   function frmValideren() {
     // Checken of de input leeg is
     if (iptOpdracht.value.trim() === "" || iptOpdracht2.value.trim() === "") {
@@ -30,6 +33,7 @@
       }
 
       // Value in localStorage zetten
+      //gebruik van localstorage #20
       localStorage.setItem("Nummer1", JSON.stringify(lijstOpdrachten1));
       localStorage.setItem("Nummer2", JSON.stringify(lijstOpdrachten2));
 
@@ -49,17 +53,25 @@ function toDoLijstTonen() {
   let lijstOpdrachten1 = JSON.parse(localStorage.getItem("Nummer1")) || [];
   let lijstOpdrachten2 = JSON.parse(localStorage.getItem("Nummer2")) || [];
 
-  //spread and rest operator
+  //spread and rest operator #8
   let toegevoegdeArrays = [...lijstOpdrachten1, ...lijstOpdrachten2];
   console.log(toegevoegdeArrays);
 
   ToDoLijst.innerHTML = "";
   let tweedeNummerIndex = toegevoegdeArrays.length / 2;
+  //Iteration over een array #9
   for (let index = 0; index < lijstOpdrachten1.length; index++) {
     //berekeningen met getallen
-    const [vermenigvuldigen, delen, macht] = Oplossingen(toegevoegdeArrays[index], toegevoegdeArrays[tweedeNummerIndex])
+    //gebruik van destructering #7
+    const [vermenigvuldigen, delen, macht] = Oplossingen(
+      toegevoegdeArrays[index],
+      toegevoegdeArrays[tweedeNummerIndex]
+    );
+    //elementen manipuleren #2 && gebruik van template iterates #6
     ToDoLijst.innerHTML += `<div class="ToDoBox">
-                <p>${toegevoegdeArrays[index]} en ${toegevoegdeArrays[tweedeNummerIndex]}</p>
+                <p>${toegevoegdeArrays[index]} en ${
+      toegevoegdeArrays[tweedeNummerIndex]
+    }</p>
                 <p>Vermenigvuldigen: ${vermenigvuldigen.toFixed(2)}</p>
                 <p>Delen: ${delen.toFixed(2)}</p>
                 <p>Macht: ${macht.toFixed(2)}</p>
@@ -70,7 +82,9 @@ function toDoLijstTonen() {
   }
 
   //event listener wanneer er op verwijderen wordt geklikt, index wordt meegegeven
+  //gebruik van arrow function #10 + callback function ook #11
   document.querySelectorAll(".verwijderen").forEach((button) => {
+    //Event aan een element koppelen #3
     button.addEventListener("click", function () {
       const index = this.getAttribute("data-index");
       lijstOpdrachten1.splice(index, 1);
@@ -88,11 +102,10 @@ function toDoLijstTonen() {
 
 //destructuring
 function Oplossingen(Nummer1, Nummer2) {
-
   const vermenigvuldigen = Nummer1 * Nummer2;
   const delen = Nummer1 / Nummer2;
-  const macht = Math.pow(Nummer1, Nummer2)
-
+  const macht = Math.pow(Nummer1, Nummer2);
 
   return [vermenigvuldigen, delen, macht];
 }
+
