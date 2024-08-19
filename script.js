@@ -135,3 +135,5 @@ function Oplossingen(Nummer1, Nummer2) {
   return [vermenigvuldigen, delen, macht];
 }
 
+
+
