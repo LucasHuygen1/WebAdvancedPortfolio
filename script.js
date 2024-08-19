@@ -152,4 +152,7 @@ async function fetchTweeGetallen() {
   `;
 }
 
-fetchTweeGetallen();
+// wanneer op de knop premade gedrukt gegevens fetchen
+document.getElementById('btnPremade').addEventListener('click', function() {
+  fetchTweeGetallen();
+});
