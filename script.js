@@ -140,7 +140,16 @@ function Oplossingen(Nummer1, Nummer2) {
 async function fetchTweeGetallen() {
   const response = await fetch('https://run.mocky.io/v3/9e193193-183b-43b0-b68b-5ecbf2b4e759');
   const nummers = await response.json();
-  console.log(nummers.number1 + ' getal 2: ' + nummers.number2);
+
+  // som van de twee getallen om vervolgens met JSON te kunnen weergeven. #17
+  const som = nummers.number1 + nummers.number2;
+
+  const jsonWeergeven = document.getElementById('jsonWeergeven');
+  jsonWeergeven.innerHTML = `
+    <p>Getal 1: ${nummers.number1}</p>
+    <p>Getal 2: ${nummers.number2}</p>
+    <p>Som: ${som}</p>
+  `;
 }
 
 fetchTweeGetallen();
