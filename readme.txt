@@ -11,3 +11,4 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises ///
 https://www.w3schools.com/Js/js_promise.asp /// Gebruik van promises
 https://chatgpt.com/share/831534e4-a309-4456-92a1-22c83fb92515 /// proberen oplossen wanneer je enter klikt wordt het vorige verwijderd ipv huidige toegevoegd. Niet kunnen fixen
 https://chatgpt.com/share/2bf8dd3c-0415-418c-9480-c86242e3ed49 /// gebruikt om te zien wat ik nog ontbreek en uitleg over Async & Await en Fetch.
+https://www.youtube.com/watch?v=cuEtnrL9-H0 /// fetch gebruiken
